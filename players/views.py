@@ -24,7 +24,7 @@ class PlayerView(APIView):
     def put(self, request, player_id):
         saved_player = get_object_or_404(Player.objects.all(), pk=player_id)
         data = request.data.get('players')
-        serializer = PlayerSerializer(instance=saved_player, data=request.data, partial=True)
+        serializer = PlayerSerializer(instance=saved_player, data=data, partial=True)
         if serializer.is_valid(raise_exception=True):
             player_saved = serializer.save()
         return Response({

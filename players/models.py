@@ -19,7 +19,8 @@ class Player(models.Model):
     club = models.ForeignKey(
         'Club',
         related_name='players',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        default=None
     )
 
     def __str__(self):

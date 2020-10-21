@@ -1,11 +1,8 @@
-from django.urls import path
-from .views import PlayerView
+from rest_framework.routers import DefaultRouter
+from .views import PlayerViewSet, ClubViewSet
 
+router = DefaultRouter()
+router.register(r'players', PlayerViewSet, basename='player')
+router.register(r'clubs', ClubViewSet, basename='club')
 
-app_name = "players"
-
-
-urlpatterns = [
-    path('players/', PlayerView.as_view()),
-    path('players/<int:player_id>', PlayerView.as_view()),
-]
+urlpatterns = router.urls
